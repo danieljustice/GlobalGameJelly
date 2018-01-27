@@ -12,6 +12,9 @@ ModelImporter:
     100008: Hair
     100010: Hair2
     100012: //RootNode
+    100014: Body_high
+    100016: Body_low29
+    100018: Body_low297
     400000: Band_low
     400002: Body_low
     400004: Cape_low
@@ -19,25 +22,35 @@ ModelImporter:
     400008: Hair
     400010: Hair2
     400012: //RootNode
+    400014: Body_high
+    400016: Body_low29
+    400018: Body_low297
     2100000: peope
+    2100002: 'Material #25'
     2300000: Band_low
     2300002: Body_low
     2300004: Cape_low
     2300006: Cloths_low
     2300008: Hair
     2300010: Hair2
+    2300012: Body_high
+    2300014: Body_low297
     3300000: Band_low
     3300002: Body_low
     3300004: Cape_low
     3300006: Cloths_low
     3300008: Hair
     3300010: Hair2
+    3300012: Body_high
+    3300014: Body_low297
     4300000: Cloths_low
     4300002: Body_low
     4300004: Band_low
     4300006: Hair2
     4300008: Cape_low
     4300010: Hair
+    4300012: Body_high
+    4300014: Body_low297
     9500000: //RootNode
   externalObjects: {}
   materials:

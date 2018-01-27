@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour {
+public class CreepEnemyAI : MonoBehaviour {
 
     Animator anim;
     public GameObject target;
