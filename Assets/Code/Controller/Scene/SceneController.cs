@@ -9,12 +9,12 @@ public class SceneController : MonoBehaviour {
     public event Action AfterSceneLoad;
     public CanvasGroup faderCanvasGroup;
     public float fadeDuration = 1f;
-    public string startingSceneName = "Test";
+    public string startingSceneName = "Scenes/ArenaTest";
     private bool isFading;
 
     private void Start()
     {
-       
+
     }
     //private IEnumerator Start()
     //{
