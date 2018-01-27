@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class AgentMove : MonoBehaviour {
 
     [SerializeField]
-    Transform _destination;
+    GameObject _destination;
 
     public float agent_speed;
     public float agent_navigation;
@@ -16,6 +16,7 @@ public class AgentMove : MonoBehaviour {
     private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _destination = GameObject.FindWithTag("Destination");
 
         if (_navMeshAgent==null)
         {
@@ -30,11 +31,11 @@ public class AgentMove : MonoBehaviour {
 
     private void SetDestination()
     {
-        if(_destination!=null)
+        if (_destination != null)
         {
             Vector3 targetVector = _destination.transform.position;
             _navMeshAgent.SetDestination(targetVector);
-        }    
+        }
     }
 
 }
