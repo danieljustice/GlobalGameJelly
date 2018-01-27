@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: 150a4659642171c44b325957443c4172
+timeCreated: 1517077853
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Game_engine
+    100002: hand_r
+    100004: index_01_r
+    100006: index_02_r
+    100008: index_03_r
+    100010: index_03_r_end
+    100012: index_03_r_end_end
+    100014: lowerarm_r
+    100016: lowerarm_r_end
+    100018: male_casualsuit01Mesh
+    100020: male_muscle_13290Mesh
+    100022: middle_01_r
+    100024: middle_02_r
+    100026: middle_03_r
+    100028: middle_03_r_end
+    100030: middle_03_r_end_end
+    100032: pinky_01_r
+    100034: pinky_02_r
+    100036: pinky_03_r
+    100038: pinky_03_r_end
+    100040: pinky_03_r_end_end
+    100042: //RootNode
+    100044: ring_01_r
+    100046: ring_02_r
+    100048: ring_03_r
+    100050: ring_03_r_end
+    100052: ring_03_r_end_end
+    100054: thumb_01_r
+    100056: thumb_02_r
+    100058: thumb_03_r
+    100060: thumb_03_r_end
+    100062: thumb_03_r_end_end
+    400000: Game_engine
+    400002: hand_r
+    400004: index_01_r
+    400006: index_02_r
+    400008: index_03_r
+    400010: index_03_r_end
+    400012: index_03_r_end_end
+    400014: lowerarm_r
+    400016: lowerarm_r_end
+    400018: male_casualsuit01Mesh
+    400020: male_muscle_13290Mesh
+    400022: middle_01_r
+    400024: middle_02_r
+    400026: middle_03_r
+    400028: middle_03_r_end
+    400030: middle_03_r_end_end
+    400032: pinky_01_r
+    400034: pinky_02_r
+    400036: pinky_03_r
+    400038: pinky_03_r_end
+    400040: pinky_03_r_end_end
+    400042: //RootNode
+    400044: ring_01_r
+    400046: ring_02_r
+    400048: ring_03_r
+    400050: ring_03_r_end
+    400052: ring_03_r_end_end
+    400054: thumb_01_r
+    400056: thumb_02_r
+    400058: thumb_03_r
+    400060: thumb_03_r_end
+    400062: thumb_03_r_end_end
+    2100000: male_casualsuit01
+    2100002: male_muscle_13290
+    4300000: male_casualsuit01Mesh
+    4300002: male_muscle_13290Mesh
+    7400000: Game_engine|Game_engine|Game_engine|Game_engineAction|Game_engine|Game_engi
+    7400002: Game_engine|Static
+    9500000: //RootNode
+    13700000: male_casualsuit01Mesh
+    13700002: male_muscle_13290Mesh
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
