@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-public enum ProjectileType {Precision, AOE}
 public class Projectile : MonoBehaviour {
     DebugText debugtext;
     public ProjectileType projectileType;
@@ -42,7 +41,7 @@ public class Projectile : MonoBehaviour {
                         hit.gameObject.GetComponent<Health>().TakeDamage(damage);
                     }
                     break;
-                case ProjectileType.AOE:
+                case ProjectileType.Area:
                     ExplosionDamage();
                     break;
 

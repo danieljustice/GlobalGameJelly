@@ -203,58 +203,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &362351740
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4917044142070676, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4917044142070676, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4917044142070676, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 4917044142070676, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4917044142070676, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4917044142070676, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4917044142070676, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4917044142070676, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 65382947380106972, guid: af1a2318a2e0ea745b007c0982910376,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: e52fb17f9b1e7fd48b8955f1391d3688,
-        type: 2}
-    - target: {fileID: 1940075542226804, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-      propertyPath: m_Name
-      value: FrictionBolt
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: af1a2318a2e0ea745b007c0982910376, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &382619350
 Prefab:
   m_ObjectHideFlags: 0
@@ -583,6 +531,10 @@ Prefab:
     - target: {fileID: 4883120043483834, guid: 4f02857a4c098464da0614fe29421524, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102220586494518, guid: 4f02857a4c098464da0614fe29421524, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f02857a4c098464da0614fe29421524, type: 2}
