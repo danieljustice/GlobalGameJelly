@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ObjectPool : MonoBehaviour {
 	List<PooledObject> availableObjects = new List<PooledObject> ();
@@ -13,7 +14,10 @@ public class ObjectPool : MonoBehaviour {
 		if (lastAvailableIndex >= 0) {
 			obj = availableObjects [lastAvailableIndex];
 			availableObjects.RemoveAt (lastAvailableIndex);
+            obj.transform.position = newPosition;
+            obj.transform.rotation = newRotation;
 			obj.gameObject.SetActive (true);
+            obj.GetComponent<AgentMove>().SetDestination();
 		} else {
             obj = Instantiate<PooledObject> (prefab, newPosition, newRotation);
 			obj.transform.SetParent (transform, false);

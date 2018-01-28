@@ -66,8 +66,6 @@ public class BoundedPoolSpawner : MonoBehaviour
                 new_position.z = myposition.z;
             }
 
-            Debug.Log(new_position);
-
             //SPAWN OBJECT
             //PoolStuff spawn = Instantiate<PoolStuff>(obj, new_position, transform.rotation) as PoolStuff;
             PoolStuff spawn = obj.GetPooledInstance<PoolStuff>(new_position, myrotation);
