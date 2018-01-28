@@ -1,29 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class OpenChargingState : ZuesHandBaseFSM
-{
-    public GameObject zuesHand;
+public class DrawPowerStateR : StateMachineBehaviour {
+
     public ChargeBoltBehavior chargedBolt;
     public float currentCharge;
-    public string tagToCharge;   
-    
+    public string tagToCharge;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        zuesHand = animator.gameObject;
-        chargedBolt = zuesHand.GetComponent<ChargeBoltBehavior>();
 
+        chargedBolt = animator.GetComponent<ChargeBoltBehavior>();
+        chargedBolt.charging = true;
+        //chargedBolt.EnableDrawPowerEffect();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         currentCharge = chargedBolt.chargeAmount;
+        animator.SetBool("Charging", chargedBolt.charging);
         animator.SetFloat("CurrentCharge", chargedBolt.chargeAmount);
-        animator.GetFloat("CurrentCharge");
+  
         Debug.Log("Current Charge " + animator.GetFloat("CurrentCharge"));
 
         if (chargedBolt.chargeAmount > 10)
@@ -32,16 +32,14 @@ public class OpenChargingState : ZuesHandBaseFSM
 
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                Debug.Log("Holding Left Trigger");
-                animator.SetBool("ReadyFire", true);
-            }
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
-            {
                 Debug.Log("Holding Right Trigger");
                 animator.SetBool("ReadyFire", true);
             }
-
-
         }
+    }
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //chargedBolt.DisableDrawPowerEffect();
     }
 }

@@ -11,16 +11,24 @@ public class ChargeBoltBehavior : MonoBehaviour {
     public GameObject chargedBoltGo;
     public GameObject drawPowerFX;
     public GameObject holdPowerFX;
-
-    void Start () {       
+    public bool charging;
+    public Transform firePoint;
+    public float launchForce = 100f;
+    void Start () {  
         animator.GetComponent<Animator>();
-
     }
 	
 	// Update is called once per frame
 	void Update () {
+
         chargeAmount = chargeSlider.value;
-        animator.SetFloat("ChargeAmount", chargeAmount);
+        animator.SetFloat("CurrentCharge", chargeAmount);
+        if (chargeAmount > 0)
+            EnableHoldPowerEffect();
+        else
+            DisableHoldPowerEffect();
+
+
     }
     public void EnableDrawPowerEffect()
     {
@@ -38,14 +46,28 @@ public class ChargeBoltBehavior : MonoBehaviour {
     {
         holdPowerFX.SetActive(false);
     }
-
+    public void FireBolt()
+    {
+        GameObject projectileInstance = Instantiate(chargedBoltGo, firePoint.position, firePoint.rotation);
+        projectileInstance.GetComponent<Rigidbody>().velocity = launchForce * firePoint.forward;
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag.Equals(tagToCharge))
         {
             Debug.Log("Charging Hands!");
+            charging = true;
+            EnableDrawPowerEffect();
             chargeSlider.value++;
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Stop Charging Hands!");
+        charging = false;
+        DisableDrawPowerEffect();
+        //chargeSlider.value++;
+        
     }
 
 }
