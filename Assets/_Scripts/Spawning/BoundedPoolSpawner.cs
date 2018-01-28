@@ -12,6 +12,9 @@ public class BoundedPoolSpawner : MonoBehaviour
     Bounds _spawnBounds;
     bool _ok;
 
+    Vector3 myposition;
+    Quaternion myrotation;
+
 
     void Start()
     {
@@ -25,6 +28,9 @@ public class BoundedPoolSpawner : MonoBehaviour
         }
         else
             _spawnBounds = collider.bounds;
+
+        myposition = transform.position;
+        myrotation = transform.rotation;
     }
 
     public PoolStuff SpawnObject(PoolStuff obj)
@@ -35,33 +41,36 @@ public class BoundedPoolSpawner : MonoBehaviour
 
             if (use_x)
             {
-                new_position.x = Random.Range(-_spawnBounds.extents.x, _spawnBounds.extents.x) + transform.position.x;
+                new_position.x = Random.Range(-_spawnBounds.extents.x, _spawnBounds.extents.x) + myposition.x;
             }
             else
             {
-                new_position.x = transform.position.x;
+                new_position.x = myposition.x;
             }
 
             if (use_y)
             {
-                new_position.y = Random.Range(-_spawnBounds.extents.y, _spawnBounds.extents.y) + transform.position.y;
+                new_position.y = Random.Range(-_spawnBounds.extents.y, _spawnBounds.extents.y) + myposition.y;
             }
             else
             {
-                new_position.y = transform.position.y;
+                new_position.y = myposition.y;
             }
 
             if (use_z)
             {
-                new_position.z = Random.Range(-_spawnBounds.extents.z, _spawnBounds.extents.z) + transform.position.z;
+                new_position.z = Random.Range(-_spawnBounds.extents.z, _spawnBounds.extents.z) + myposition.z;
             }
             else
             {
-                new_position.z = transform.position.z;
+                new_position.z = myposition.z;
             }
 
+            Debug.Log(new_position);
+
             //SPAWN OBJECT
-            PoolStuff spawn = obj.GetPooledInstance<PoolStuff>();
+            //PoolStuff spawn = Instantiate<PoolStuff>(obj, new_position, transform.rotation) as PoolStuff;
+            PoolStuff spawn = obj.GetPooledInstance<PoolStuff>(new_position, myrotation);
             spawn.transform.position = new_position;
 
             return spawn;

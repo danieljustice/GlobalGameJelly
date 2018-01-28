@@ -6,7 +6,7 @@ public class ObjectPool : MonoBehaviour {
 	List<PooledObject> availableObjects = new List<PooledObject> ();
 	PooledObject prefab;
 
-	public PooledObject GetObject()
+    public PooledObject GetObject(Vector3 newPosition, Quaternion newRotation)
 	{
 		PooledObject obj; 
 		int lastAvailableIndex = availableObjects.Count - 1;
@@ -15,7 +15,7 @@ public class ObjectPool : MonoBehaviour {
 			availableObjects.RemoveAt (lastAvailableIndex);
 			obj.gameObject.SetActive (true);
 		} else {
-			obj = Instantiate<PooledObject> (prefab);
+            obj = Instantiate<PooledObject> (prefab, newPosition, newRotation);
 			obj.transform.SetParent (transform, false);
 			obj.Pool = this;
 		}
