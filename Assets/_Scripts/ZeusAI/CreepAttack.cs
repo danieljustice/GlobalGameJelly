@@ -9,12 +9,14 @@ public class CreepAttack : NPCBaseFSM {
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         //start attacking
+        NPC.GetComponent<CreepEnemyAI>().StartAttack();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         NPC.transform.LookAt(opponent.transform.position);
+        NPC.GetComponent<CreepEnemyAI>().StopAttack();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
