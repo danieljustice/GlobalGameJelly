@@ -17,11 +17,9 @@ public class CreepEnemyAI : MonoBehaviour {
 	void Start () {
         target = GameObject.FindGameObjectWithTag("target");
         anim = GetComponent<Animator>();
-        childAnimator = GetComponentInChildren<Animator>();
-        if(childAnimator == null)
-        {
-            Debug.Log("woot");
-        }
+
+        //this is horrible, requires atleast two anims on this object
+        childAnimator = GetComponentsInChildren<Animator>()[1];
     }
 	
 	// Update is called once per frame
@@ -32,6 +30,7 @@ public class CreepEnemyAI : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+
         anim.SetBool("touchingTarget", true);
         childAnimator.SetBool("touchingTarget", true);
     }
@@ -41,6 +40,7 @@ public class CreepEnemyAI : MonoBehaviour {
         anim.SetBool("touchingTarget", false);
         childAnimator.SetBool("touchingTarget", false);
     }
+
 
     void Attack()
     {
