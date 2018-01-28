@@ -67,8 +67,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPC: {fileID: 0}
   opponent: {fileID: 0}
-  agent_speed: 200
-  agent_navigation: 200
+  agent_speed: 5
+  agent_navigation: 5
   _destination: {fileID: 0}
 --- !u!114 &114356339962947610
 MonoBehaviour:
