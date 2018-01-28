@@ -7,7 +7,7 @@ public class CreepEnemyAI : MonoBehaviour {
     Animator anim;
     Animator childAnimator;
     public GameObject target;
-
+    public PoolStuff poolStuff;
     public GameObject GetTarget()
     {
         return target;
@@ -60,6 +60,9 @@ public class CreepEnemyAI : MonoBehaviour {
 
     public void Death()
     {
+        poolStuff.ReturnToPool();
         //do dieing things heres
+        anim.SetBool("isDead", true);
+        childAnimator.SetBool("isDead", true);
     }
 }

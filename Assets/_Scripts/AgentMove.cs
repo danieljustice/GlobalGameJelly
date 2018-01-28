@@ -29,7 +29,7 @@ public class AgentMove : MonoBehaviour {
         }
     }
 
-    private void SetDestination()
+    public void SetDestination()
     {
         if (_destination != null)
         {
