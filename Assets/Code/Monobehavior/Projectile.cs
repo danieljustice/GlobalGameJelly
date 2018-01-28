@@ -65,26 +65,14 @@ public class Projectile : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Hit Object: " + other.gameObject.name);
-        //if (hit.gameObject.tag == "Player" || hit.gameObject.tag == "Projectile")
-        //    return;
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Projectile")
+            return;
 
         if (!hasCollided)
         {
             hasCollided = true;
-            switch (projectileType)
-            {
-                case ProjectileType.Precision:
-                    if (other.gameObject.tag == "Enemy") // Projectile will destroy objects tagged as Destructible
-                    {
-                        Debug.Log("Hit Object: " + other.gameObject.name);
-                        other.gameObject.GetComponent<Health>().TakeDamage(damage);
-                    }
-                    break;
-                case ProjectileType.Area:
-                    ExplosionDamage();
-                    break;
+            ExplosionDamage();
 
-            }
             ////impactParticle = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, impactNormal)) as GameObject;
             ////Debug.DrawRay(hit.contacts[0].point, hit.contacts[0].normal * 1, Color.yellow);
             ////yield WaitForSeconds (0.05);
@@ -122,7 +110,7 @@ public class Projectile : MonoBehaviour {
             if (hitColliders[i].gameObject.tag == "Enemy") // Projectile will destroy objects tagged as Destructible
             {
                 Debug.Log("Blast Hit " + hitColliders[i].gameObject.name);            
-                //hitColliders[i].gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                hitColliders[i].gameObject.GetComponent<Health>().TakeDamage(damage);
             }
             i++;
         }

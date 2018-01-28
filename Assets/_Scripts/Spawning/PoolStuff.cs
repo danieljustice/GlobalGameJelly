@@ -11,7 +11,7 @@ public class PoolStuff : PooledObject {
 
 	void OnTriggerEnter(Collider enteredCollider)
 	{
-        if (enteredCollider.CompareTag("PoolTrigger"))
+        if (enteredCollider.CompareTag("Enemy"))
         {
             ReturnToPool();
         }
