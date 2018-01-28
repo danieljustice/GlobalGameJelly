@@ -1,0 +1,61 @@
+﻿Shader "Custom/Custom_UVPan" {
+	Properties {
+		_Color ("Color", Color) = (1,1,1,1)
+     	_MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
+     	_AlphaMap ("Additional Alpha Map (Greyscale)", 2D) = "white" {}
+		_Glossiness ("Smoothness", Range(0,1)) = 0.5
+		_Metallic ("Metallic", Range(0,1)) = 0.0
+		_ScrollXSpeed ("Pan U", Range(0,10)) = 2
+		_ScrollYSpeed ("Pan V", Range(0,10)) = 2
+	}
+	SubShader {
+		Tags { "RenderType"="Opaque" }
+		LOD 200
+
+		CGPROGRAM
+		// Physically based Standard lighting model, and enable shadows on all light types
+		#pragma surface surf Standard fullforwardshadows
+
+		// Use shader model 3.0 target, to get nicer looking lighting
+		#pragma target 3.0
+
+		fixed _ScrollXSpeed;
+		fixed _ScrollYSpeed;
+
+		sampler2D _MainTex;
+
+		struct Input {
+			float2 uv_MainTex;
+		};
+
+		half _Glossiness;
+		half _Metallic;
+		fixed4 _Color;
+
+		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
+		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
+		// #pragma instancing_options assumeuniformscaling
+		UNITY_INSTANCING_BUFFER_START(Props)
+			// put more per-instance properties here
+		UNITY_INSTANCING_BUFFER_END(Props)
+
+		void surf (Input IN, inout SurfaceOutputStandard o) {
+
+			fixed2 scrolledUV = IN.uv_MainTex;
+			fixed xScrollValue = _ScrollXSpeed * _Time;
+			fixed yScrollValue = _ScrollYSpeed * _Time;
+			scrolledUV += fixed2 (xScrollValue, yScrollValue);
+
+			half4 c = tex2D (_MainTex, scrolledUV);
+			// Albedo comes from a texture tinted by color
+			//fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+			o.Albedo = c.rgb;
+			// Metallic and smoothness come from slider variables
+			o.Metallic = _Metallic;
+			o.Smoothness = _Glossiness;
+			o.Alpha = c.a;
+		}
+		ENDCG
+	}
+	FallBack "Diffuse"
+}
