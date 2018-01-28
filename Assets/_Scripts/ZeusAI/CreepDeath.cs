@@ -8,7 +8,11 @@ public class CreepDeath : NPCBaseFSM{
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        animator.GetComponent<CreepEnemyAI>().Death();
+		CreepEnemyAI tempAI = animator.GetComponent<CreepEnemyAI> ();
+		if (tempAI) {
+			tempAI.Death ();
+		}
+        //animator.GetComponent<CreepEnemyAI>().Death();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

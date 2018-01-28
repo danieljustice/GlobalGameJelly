@@ -25,20 +25,20 @@ public class CreepEnemyAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         anim.SetFloat("distance", Vector3.Distance(transform.position, target.transform.position));
-        childAnimator.SetFloat("distance", Vector3.Distance(transform.position, target.transform.position));
+		if(childAnimator)childAnimator.SetFloat("distance", Vector3.Distance(transform.position, target.transform.position));
     }
 
     void OnTriggerEnter(Collider other)
     {
 
         anim.SetBool("touchingTarget", true);
-        childAnimator.SetBool("touchingTarget", true);
+		if(childAnimator)childAnimator.SetBool("touchingTarget", true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         anim.SetBool("touchingTarget", false);
-        childAnimator.SetBool("touchingTarget", false);
+		if(childAnimator)childAnimator.SetBool("touchingTarget", false);
     }
 
 
@@ -62,9 +62,9 @@ public class CreepEnemyAI : MonoBehaviour {
 
     public void Death()
     {
-        poolStuff.ReturnToPool();
+        //poolStuff.ReturnToPool();
         //do dieing things heres
         //anim.SetBool("isDead", true);
-        childAnimator.SetBool("isDead", true);
+		if(childAnimator) childAnimator.SetBool("isDead", true);
     }
 }

@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPC: {fileID: 0}
   opponent: {fileID: 0}
-  agent_speed: 10
-  agent_navigation: 10
+  agent_speed: 5
+  agent_navigation: 5
 --- !u!114 &114264612176613832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,8 +83,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPC: {fileID: 0}
   opponent: {fileID: 0}
-  agent_speed: 10
-  agent_navigation: 10
+  agent_speed: 5
+  agent_navigation: 5
 --- !u!114 &114568011638347086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,7 +359,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102252271867036560}
-    m_Position: {x: 276, y: 120, z: 0}
+    m_Position: {x: 264, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102610210371795522}
     m_Position: {x: 276, y: 240, z: 0}

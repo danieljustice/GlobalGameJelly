@@ -14,6 +14,10 @@ public class NPCBaseFSM : StateMachineBehaviour {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         NPC = animator.gameObject;
-        opponent = NPC.GetComponent<CreepEnemyAI>().GetTarget();
+		CreepEnemyAI tempAI = NPC.GetComponent<CreepEnemyAI> ();
+		if (tempAI) {
+			opponent = tempAI.GetTarget ();
+		}
+        //opponent = NPC.GetComponent<CreepEnemyAI>().GetTarget();
     }
 }
