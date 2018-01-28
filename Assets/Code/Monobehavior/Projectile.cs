@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-public class Projectile : MonoBehaviour {
-    DebugText debugtext;
+public class Projectile : MonoBehaviour {    
     public ProjectileType projectileType;
     public int damage = 50;
     //public GameObject impactParticle;
@@ -12,17 +11,6 @@ public class Projectile : MonoBehaviour {
     public float blastRadius;
     private bool hasCollided = false;
 
-    void Start()
-    {
-        debugtext = FindObjectOfType<DebugText>();
-        //projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation) as GameObject;
-        //projectileParticle.transform.parent = transform;
-        //if (muzzleParticle)
-        //{
-        //    muzzleParticle = Instantiate(muzzleParticle, transform.position, transform.rotation) as GameObject;
-        //    Destroy(muzzleParticle, 1.5f); // Lifetime of muzzle effect.
-        //}
-    }
     void OnCollisionEnter(Collision hit)
     {
         Debug.Log("Hit Object: " + hit.gameObject.name);
@@ -74,6 +62,45 @@ public class Projectile : MonoBehaviour {
             //}           
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Hit Object: " + other.gameObject.name);
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Projectile")
+            return;
+
+        if (!hasCollided)
+        {
+            hasCollided = true;
+            ExplosionDamage();
+
+            ////impactParticle = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, impactNormal)) as GameObject;
+            ////Debug.DrawRay(hit.contacts[0].point, hit.contacts[0].normal * 1, Color.yellow);
+            ////yield WaitForSeconds (0.05);
+            //foreach (GameObject trail in trailParticles)
+            //{
+            //    GameObject curTrail = transform.Find(projectileParticle.name + "/" + trail.name).gameObject;
+            //    curTrail.transform.parent = null;
+            //    Destroy(curTrail, 3f);
+            //}
+            ////transform.DetachChildren();
+            //Destroy(projectileParticle, 3f);
+            //Destroy(impactParticle, 4f);
+            //Destroy(gameObject);
+            ////projectileParticle.Stop();
+
+            //ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>();
+            ////Component at [0] is that of the parent i.e. this object (if there is any)
+            //for (int i = 1; i < trails.Length; i++)
+            //{
+            //    ParticleSystem trail = trails[i];
+            //    if (!trail.gameObject.name.Contains("Trail"))
+            //        continue;
+
+            //    trail.transform.SetParent(null);
+            //    Destroy(trail.gameObject, 2);
+            //}           
+        }
+    }
     void ExplosionDamage()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, blastRadius);
@@ -83,7 +110,7 @@ public class Projectile : MonoBehaviour {
             if (hitColliders[i].gameObject.tag == "Enemy") // Projectile will destroy objects tagged as Destructible
             {
                 Debug.Log("Blast Hit " + hitColliders[i].gameObject.name);            
-                //hitColliders[i].gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                hitColliders[i].gameObject.GetComponent<Health>().TakeDamage(damage);
             }
             i++;
         }
