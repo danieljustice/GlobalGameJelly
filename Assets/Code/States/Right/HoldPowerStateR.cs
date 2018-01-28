@@ -6,13 +6,13 @@ public class HoldPowerStateR : StateMachineBehaviour {
     public ChargeBoltBehavior chargedBolt;
     public float currentCharge;
     public string tagToCharge;
-    //public GameObject boltPrefab;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         chargedBolt = animator.GetComponent<ChargeBoltBehavior>();
         currentCharge = animator.GetFloat("CurrentCharge");
         Debug.Log("HoldPower State");
-        chargedBolt.EnableHoldPowerEffect();
+        chargedBolt.EnableReadyBoltEffect();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -22,12 +22,9 @@ public class HoldPowerStateR : StateMachineBehaviour {
         if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
         {
             Debug.Log("Released Right Trigger");
-            chargedBolt.DisableHoldPowerEffect();
+            chargedBolt.EnableReadyBoltEffect();
             chargedBolt.chargeSlider.value = 0;
-            chargedBolt.FireBolt();
-            animator.SetBool("ReadyFire", false);
-
-            
+            animator.SetBool("ReadyFire", false);        
         }
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

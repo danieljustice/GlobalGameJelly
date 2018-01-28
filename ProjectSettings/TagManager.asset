@@ -12,6 +12,7 @@ TagManager:
   - Charger
   - waypoint
   - target
+  - Terrain
   layers:
   - Default
   - TransparentFX

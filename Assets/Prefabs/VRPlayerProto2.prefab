@@ -309,6 +309,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1443257331226656
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4888506176984680}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1443487646539374
 GameObject:
   m_ObjectHideFlags: 1
@@ -513,7 +528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1787820597706932
 GameObject:
   m_ObjectHideFlags: 1
@@ -575,7 +590,7 @@ GameObject:
   - component: {fileID: 33266690330371390}
   - component: {fileID: 23573863937091872}
   - component: {fileID: 135303693241850598}
-  - component: {fileID: 114693301042328000}
+  - component: {fileID: 114957986147294338}
   m_Layer: 0
   m_Name: R Sphere
   m_TagString: Chargable
@@ -1032,9 +1047,23 @@ Transform:
   - {fileID: 4666249572815248}
   - {fileID: 4309254405610646}
   - {fileID: 4604708816063890}
+  - {fileID: 4888506176984680}
   m_Father: {fileID: 4831997418416174}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4888506176984680
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443257331226656}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.04, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4876269486049068}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4942039534352746
 Transform:
   m_ObjectHideFlags: 1
@@ -1449,7 +1478,7 @@ Animator:
   m_GameObject: {fileID: 1878567204781712}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cdc0748a15919a8479ae9915a3507709, type: 2}
+  m_Controller: {fileID: 9100000, guid: 970db6f743c8d0e4eaaea4408502be2b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1535,6 +1564,9 @@ MonoBehaviour:
   chargedBoltGo: {fileID: 1443487646539374}
   drawPowerFX: {fileID: 1311031841993108}
   holdPowerFX: {fileID: 1519816354135962}
+  charging: 0
+  firePoint: {fileID: 0}
+  launchForce: 100
 --- !u!114 &114472433400578706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1569,24 +1601,6 @@ MonoBehaviour:
   fadeInTexture: {fileID: 0}
   speedRotationIncrement: 0.05
   layerName: Default
---- !u!114 &114693301042328000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1878567204781712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a63052dff902b4798828a8dbc3c8f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 95779963266808036}
-  tagToCharge: Charger
-  chargeSlider: {fileID: 0}
-  chargeAmount: 0
-  chargedBoltGo: {fileID: 1930430472375506}
-  drawPowerFX: {fileID: 1051444168705034}
-  holdPowerFX: {fileID: 1787820597706932}
 --- !u!114 &114698328375573716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1631,6 +1645,28 @@ MonoBehaviour:
   fadeTime: 2
   fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
   fadeOnStart: 1
+--- !u!114 &114957986147294338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878567204781712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a63052dff902b4798828a8dbc3c8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95779963266808036}
+  tagToCharge: Charger
+  chargeSlider: {fileID: 0}
+  chargeAmount: 0
+  chargedBoltGo: {fileID: 1650209922746724, guid: 82d02c6f3c59ac3429f0e9efb5113d91,
+    type: 2}
+  drawPowerFX: {fileID: 1051444168705034}
+  holdPowerFX: {fileID: 1787820597706932}
+  charging: 0
+  firePoint: {fileID: 4888506176984680}
+  launchForce: 20
 --- !u!135 &135188159955034396
 SphereCollider:
   m_ObjectHideFlags: 1

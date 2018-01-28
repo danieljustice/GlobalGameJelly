@@ -23,9 +23,6 @@ public class DrawPowerStateR : StateMachineBehaviour {
         currentCharge = chargedBolt.chargeAmount;
         animator.SetBool("Charging", chargedBolt.charging);
         animator.SetFloat("CurrentCharge", chargedBolt.chargeAmount);
-  
-        Debug.Log("Current Charge " + animator.GetFloat("CurrentCharge"));
-
         if (chargedBolt.chargeAmount > 10)
         {
             Debug.Log("Fully Charged");
