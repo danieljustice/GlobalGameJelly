@@ -48,8 +48,12 @@ public class Projectile : MonoBehaviour {
         {
             if (hitColliders[i].gameObject.tag == "Enemy"|| hitColliders[i].gameObject.tag == "Friend") // Projectile will destroy objects tagged as Destructible
             {
-                Debug.Log("Blast Hit " + hitColliders[i].gameObject.name);            
-                hitColliders[i].gameObject.GetComponent<Health>().TakeDamage(damage);
+                Debug.Log("Blast Hit " + hitColliders[i].gameObject.name); 
+				Health h = hitColliders [i].gameObject.GetComponent<Health> ();
+				if (h) {
+					h.TakeDamage (damage);
+				}
+                //hitColliders[i].gameObject.GetComponent<Health>().TakeDamage(damage);
             }
             i++;
         }
