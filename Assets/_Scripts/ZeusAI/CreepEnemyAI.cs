@@ -61,5 +61,7 @@ public class CreepEnemyAI : MonoBehaviour {
     public void Death()
     {
         //do dieing things heres
+        anim.SetBool("isDead", true);
+        childAnimator.SetBool("isDead", true);
     }
 }
