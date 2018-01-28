@@ -774,8 +774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790c468d33217461d9663251c9c6676c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  batchsize: 5
   intervalStart: 5
-  bps: {fileID: 1054459966}
   obj: {fileID: 114193354305378226, guid: eae737f2a0dee46a4bee6be73825f01e, type: 2}
   destination: {fileID: 1598872111}
 --- !u!4 &507353390

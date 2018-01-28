@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class SpawnEngine : MonoBehaviour {
 
+    public int batchsize;
     public float intervalStart;
-    public BoundedPoolSpawner bps;
+
+    private BoundedPoolSpawner bps;
     public PoolStuff obj;
+
     public Transform destination;
 
     private float timer;
 
     private void Start()
     {
-        timer = intervalStart;
+        bps = (BoundedPoolSpawner)GameObject.FindObjectOfType(typeof(BoundedPoolSpawner));
+        timer = 0;
     }
     void Update () {
 
@@ -23,8 +27,25 @@ public class SpawnEngine : MonoBehaviour {
         }
         else
         {
-            PoolStuff obj2 = bps.SpawnObject(obj);
+            PoolStuff[] batch = MakeBatch(batchsize);
+
+            foreach (var item in batch)
+            {
+                PoolStuff obj2 = bps.SpawnObject(item);
+            }
             timer = intervalStart;
         }
+    }
+
+    PoolStuff[] MakeBatch(int _batchsize)
+    {
+        PoolStuff[] newBatch = new PoolStuff[_batchsize];
+
+        for (int i = 0; i < _batchsize; i++)
+        {
+            newBatch[i] = obj;
+        }
+
+        return newBatch;
     }
 }
