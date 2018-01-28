@@ -23,9 +23,20 @@ public class CreepEnemyAI : MonoBehaviour {
         anim.SetFloat("distance", Vector3.Distance(transform.position, target.transform.position));
 	}
 
+    void OnTriggerEnter(Collider other)
+    {
+        anim.SetBool("touchingTarget", true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        anim.SetBool("touchingTarget", false);
+    }
+
     void Attack()
     {
         //this is how you attack
+        print("attacking");
     }
 
     public void StartAttack()
@@ -36,5 +47,10 @@ public class CreepEnemyAI : MonoBehaviour {
     public void StopAttack()
     {
         CancelInvoke("Fire");
+    }
+
+    public void Death()
+    {
+        //do dieing things heres
     }
 }

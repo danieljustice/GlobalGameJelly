@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -520,6 +520,10 @@ Prefab:
     - target: {fileID: 100000, guid: 68d589916078e4a8e9b06c2bab0d0214, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 68d589916078e4a8e9b06c2bab0d0214, type: 3}
+      propertyPath: m_TagString
+      value: target
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68d589916078e4a8e9b06c2bab0d0214, type: 3}
@@ -2208,6 +2212,40 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1397796363}
   m_Mesh: {fileID: 4300026, guid: d4b3f22ba7726467c8a3227f0b645814, type: 3}
+--- !u!1 &1399672082 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1196658736379672, guid: eae737f2a0dee46a4bee6be73825f01e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1548247925}
+--- !u!95 &1399672083
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1399672082}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8431e27469def2540be3e76602cb977d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1399672092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1399672082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c07f5ad491aa924786faf6134373aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2051127111}
 --- !u!1 &1453036843
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,6 +2430,11 @@ Prefab:
     - target: {fileID: 4489030493360752, guid: eae737f2a0dee46a4bee6be73825f01e, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114524977644416440, guid: eae737f2a0dee46a4bee6be73825f01e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eae737f2a0dee46a4bee6be73825f01e, type: 2}
