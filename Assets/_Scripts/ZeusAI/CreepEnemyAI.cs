@@ -5,6 +5,7 @@ using UnityEngine;
 public class CreepEnemyAI : MonoBehaviour {
 
     Animator anim;
+    Animator childAnimator;
     public GameObject target;
 
     public GameObject GetTarget()
@@ -16,21 +17,29 @@ public class CreepEnemyAI : MonoBehaviour {
 	void Start () {
         target = GameObject.FindGameObjectWithTag("target");
         anim = GetComponent<Animator>();
-	}
+        childAnimator = GetComponentInChildren<Animator>();
+        if(childAnimator == null)
+        {
+            Debug.Log("woot");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
         anim.SetFloat("distance", Vector3.Distance(transform.position, target.transform.position));
-	}
+        childAnimator.SetFloat("distance", Vector3.Distance(transform.position, target.transform.position));
+    }
 
     void OnTriggerEnter(Collider other)
     {
         anim.SetBool("touchingTarget", true);
+        childAnimator.SetBool("touchingTarget", true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         anim.SetBool("touchingTarget", false);
+        childAnimator.SetBool("touchingTarget", false);
     }
 
     void Attack()
