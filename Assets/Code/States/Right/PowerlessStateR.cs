@@ -21,7 +21,7 @@ public class PowerlessStateR : StateMachineBehaviour {
     {
         animator.SetBool("Charging", chargedBolt.charging);
         //animator.SetFloat("CurrentCharge", chargedBolt.chargeAmount);       
-        Debug.Log("Current Charge " + animator.GetFloat("CurrentCharge"));
+        //Debug.Log("Current Charge " + animator.GetFloat("CurrentCharge"));
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

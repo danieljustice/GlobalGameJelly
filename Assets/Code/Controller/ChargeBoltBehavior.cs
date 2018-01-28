@@ -9,6 +9,7 @@ public class ChargeBoltBehavior : MonoBehaviour {
     public Slider chargeSlider;
     public float chargeAmount;
     public GameObject chargedBoltGo;
+    public GameObject greasyBoltFab;
     public GameObject drawPowerFX;
     public GameObject holdPowerFX;
     public bool charging;
@@ -27,8 +28,6 @@ public class ChargeBoltBehavior : MonoBehaviour {
             EnableHoldPowerEffect();
         else
             DisableHoldPowerEffect();
-
-
     }
     public void EnableDrawPowerEffect()
     {
@@ -45,6 +44,18 @@ public class ChargeBoltBehavior : MonoBehaviour {
     public void DisableHoldPowerEffect()
     {
         holdPowerFX.SetActive(false);
+    }
+    public void EnableReadyBoltEffect()
+    {
+        greasyBoltFab.SetActive(true);
+    }
+    public void DisableReadyBoltEffect()
+    {
+        greasyBoltFab.SetActive(false);
+    }
+    public void ReadyBolt()
+    {
+        greasyBoltFab.SetActive(true);
     }
     public void FireBolt()
     {
