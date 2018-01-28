@@ -22,6 +22,13 @@ public class SceneController : MonoBehaviour {
     //    yield return StartCoroutine(LoadSceneAndSetActive(startingSceneName));
     //    StartCoroutine(Fade(0f));
     //}
+    public void FadeAndReloadScene(string sceneName)
+    {
+        if (!isFading)
+        {
+            StartCoroutine(FadeAndSwitchScenes(startingSceneName));
+        }
+    }
     public void FadeAndLoadScene(string sceneName)
     {
         if (!isFading)

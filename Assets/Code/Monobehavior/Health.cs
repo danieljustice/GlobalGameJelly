@@ -60,6 +60,7 @@ public class Health : MonoBehaviour {
         //enemyAudio.clip = deathClip;
         //enemyAudio.Play();
         //capsuleCollider.isTrigger = true;
+        FindObjectOfType<ScoreManager>().score += scoreValue;
         animator.SetBool("isDead", true);
         //yield return new WaitForSecondsRealtime(2f);
         isDead = true;
