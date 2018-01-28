@@ -110,6 +110,8 @@ GameObject:
   - component: {fileID: 195468603553393690}
   - component: {fileID: 54138153759102164}
   - component: {fileID: 136847799761110982}
+  - component: {fileID: 114857729210625246}
+  - component: {fileID: 114579141130044682}
   m_Layer: 0
   m_Name: Warrior Fighter
   m_TagString: Untagged
@@ -569,6 +571,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &114579141130044682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484083364856654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cbf7a863ab924846bf999fc6ba73b88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  sinkSpeed: 0.5
+  scoreValue: 10
+--- !u!114 &114857729210625246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484083364856654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58840b45b7d0a441f9b63cfc06bbb491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114934651249767582
 MonoBehaviour:
   m_ObjectHideFlags: 1

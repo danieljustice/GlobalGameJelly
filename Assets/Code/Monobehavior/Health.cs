@@ -23,7 +23,7 @@ public class Health : MonoBehaviour {
     void Awake()
     {
         // Setting up the references.
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         //enemyAudio = GetComponent<AudioSource>();
         //capsuleCollider = GetComponentInChildren<CapsuleCollider>();
         //agent = GetComponent<NavMeshAgent>();
@@ -40,26 +40,28 @@ public class Health : MonoBehaviour {
         Debug.Log(gameObject.name + " Took Damage!");
         currentHealth -= amount;
         // If the enemy is dead...
-        //if (currentHealth <= 0)
-        //{
-        //    GetComponent<NavMeshAgent>().isStopped = true;
-        //    StartCoroutine(Death());
-        //    return;
-        //}
+        if (currentHealth <= 0)
+        {
+            //GetComponent<NavMeshAgent>().isStopped = true;
+            Death();
+            return;
+        }
         // Play the hurt sound effect.
         //enemyAudio.Play();
         //animator.SetTrigger("Damage");
         //StartCoroutine(Hit());
     }
 
-    IEnumerator Death()
+
+
+    void Death()
     {
         // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
         //enemyAudio.clip = deathClip;
         //enemyAudio.Play();
-        capsuleCollider.isTrigger = true;
-        animator.SetTrigger("Die");
-        yield return new WaitForSecondsRealtime(2f);
+        //capsuleCollider.isTrigger = true;
+        animator.SetBool("isDead", true);
+        //yield return new WaitForSecondsRealtime(2f);
         isDead = true;
     }
     IEnumerator Hit()

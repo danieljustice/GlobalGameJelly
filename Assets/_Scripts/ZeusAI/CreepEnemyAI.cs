@@ -45,7 +45,7 @@ public class CreepEnemyAI : MonoBehaviour {
     void Attack()
     {
         //this is how you attack
-        print("attacking");
+        //print("attacking");
     }
 
     public void StartAttack()
@@ -61,7 +61,7 @@ public class CreepEnemyAI : MonoBehaviour {
     public void Death()
     {
         //do dieing things heres
-        anim.SetBool("isDead", true);
+        //anim.SetBool("isDead", true);
         childAnimator.SetBool("isDead", true);
     }
 }

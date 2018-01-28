@@ -36,7 +36,7 @@ public class CreepChase : NPCBaseFSM {
         
         if (_destination != null)
         {
-            Debug.Log("here");
+            //Debug.Log("here");
             Vector3 targetVector = _destination.transform.position;
             _navMeshAgent.SetDestination(targetVector);
         }
