@@ -4,60 +4,80 @@ using UnityEngine;
 
 public class SpawnEngine : MonoBehaviour {
 
-    public int startWait;
+    public int startWait; // wait before starting the waves
+    public ScriptableBool wavesAreGo;
+    public ScriptableStat waveNumber; // what wave are we on?
 
-    public ScriptableStat waveNumber;
-
-    public Vector2 batchrange = new Vector2(1,1);
+    // The two below are based on the waveNumber.
+    public ScriptableStat batchModifier; // how much should we increase the number of batches?
+    public ScriptableStat batchSizeModifier; // how much should we increase the number within a batch?
 
     public float batchLull; // time between batches
     public float waveLull; // time between waves
 
-    public PoolStuff[] creeps;
+    public GameObject[] creeps;
 
-    private BoundedPoolSpawner bps;
-    //public PoolStuff obj;
-
-    public Transform destination;
-
-    //private float batchTimer;
-    //private float waveTimer;
+    private BoundedSpawner[] spawners;
 
     private void Start()
     {
         waveNumber.SetValue(0);
-        //waveTimer = 0;
-        //batchTimer = 0;
-        bps = FindObjectOfType(typeof(BoundedPoolSpawner)) as BoundedPoolSpawner;
+        wavesAreGo.SetValue(true);
+        spawners = FindObjectsOfType<BoundedSpawner>() as BoundedSpawner[];
 
-        StartCoroutine(MakeWaves());
+        if (spawners.Length < 1)
+        {
+            Debug.Log("There are no spawners for the SpawnEngine!!!");
+        }
+        else if (creeps.Length < 1)
+        {
+            Debug.Log("There are no creeps in the SpawnEngine!!!");
+        }
+        else
+        {
+            StartCoroutine(MakeWaves());
+        }
     }
 
     IEnumerator MakeWaves()
     {
         yield return new WaitForSeconds(startWait); // wait before starting
 
-        while (waveNumber.GetValue()<1f)
+        waveNumber.SetValue(1); // start the waves!
+
+        while (wavesAreGo)
         {
-            StartCoroutine(MakeBatches()); // 
-            yield return new WaitForSeconds(waveLull);
+            Debug.Log(waveNumber.GetValue());
+            StartCoroutine(MakeBatches());
+            yield return new WaitForSeconds(waveLull); // wait time between waves
+            waveNumber.ApplyChange(1);
         }
     }
 
     IEnumerator MakeBatches() 
     {
-        PoolStuff[] newBatch = new PoolStuff[Mathf.RoundToInt(batchrange.y)];
-
-        for (int i = 0; i < batchrange.y; i++)
+        if (Mathf.RoundToInt(batchModifier.GetValue()) == 0 | (Mathf.RoundToInt(batchSizeModifier.GetValue()) == 0))
+            Debug.Log("Your rounded BatchModifier or BatchSizeModifier is equal to zero and needs to be more than 0!!!");
+        
+        for (int i = 0; i < Mathf.RoundToInt(waveNumber.GetValue() * batchModifier.GetValue()); i++)
         {
-            newBatch[i] = creeps[Random.Range(0, creeps.Length)];
-        }
+            BoundedSpawner whichSpawner = spawners[Random.Range(0,spawners.Length)];
 
-        foreach (var item in newBatch)
-        {
-            PoolStuff obj2 = bps.SpawnObject(item);
-        }
+            int batchsize = Mathf.RoundToInt(waveNumber.GetValue() * batchSizeModifier.GetValue());
 
-        yield return new WaitForSeconds(1);
+            GameObject[] newBatch = new GameObject[batchsize];
+
+            for (int x = 0; x < batchsize; x++)
+            {
+                newBatch[x] = creeps[Random.Range(0, creeps.Length)];
+            }
+
+            foreach (var item in newBatch)
+            {
+                GameObject obj = whichSpawner.SpawnObject(item);
+            }
+
+            yield return new WaitForSeconds(batchLull);
+        }
     }
 }
