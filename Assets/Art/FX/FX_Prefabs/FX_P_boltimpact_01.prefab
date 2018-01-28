@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4192073789599700}
+  - component: {fileID: 114833737447382054}
   m_Layer: 0
   m_Name: FX_P_boltimpact_01
   m_TagString: Untagged
@@ -318,6 +319,18 @@ Transform:
   m_Father: {fileID: 4473905271139362}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114833737447382054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1196754388220456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0c5fea1e2236344b11be03587694c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToLive: 2
 --- !u!198 &198263452060458914
 ParticleSystem:
   m_ObjectHideFlags: 1

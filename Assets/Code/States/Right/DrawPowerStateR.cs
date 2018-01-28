@@ -23,9 +23,6 @@ public class DrawPowerStateR : StateMachineBehaviour {
         currentCharge = chargedBolt.chargeAmount;
         animator.SetBool("Charging", chargedBolt.charging);
         animator.SetFloat("CurrentCharge", chargedBolt.chargeAmount);
-  
-        Debug.Log("Current Charge " + animator.GetFloat("CurrentCharge"));
-
         if (chargedBolt.chargeAmount > 10)
         {
             Debug.Log("Fully Charged");
@@ -33,6 +30,7 @@ public class DrawPowerStateR : StateMachineBehaviour {
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 Debug.Log("Holding Right Trigger");
+                chargedBolt.EnableReadyBoltEffect();
                 animator.SetBool("ReadyFire", true);
             }
         }

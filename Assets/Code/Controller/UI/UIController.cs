@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour {
     public GameObject gameOverPanel;
     public GameObject debugPanel;
     public GameObject messagePanel;
+    public GameObject startPanel;
 
     //Call this function to activate and display the Pause panel during game play
     public void ShowPausePanel()
@@ -60,5 +61,16 @@ public class UIController : MonoBehaviour {
     public void HideMessagePanel()
     {
         messagePanel.SetActive(false);
+    }
+    ////Call this function to activate and display the Debug panel during game play
+    public void ShowStartPanel()
+    {
+        startPanel.SetActive(true);
+    }
+
+    //Call this function to deactivate and hide the Debug panel during game play
+    public void HideStartPanel()
+    {
+        startPanel.SetActive(false);
     }
 }
