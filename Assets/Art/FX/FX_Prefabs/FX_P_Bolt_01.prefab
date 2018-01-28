@@ -411,7 +411,7 @@ MonoBehaviour:
   damage: 50
   impactParticle: {fileID: 1196754388220456, guid: c67819f09a7316540ae03f271356bdd8,
     type: 2}
-  blastRadius: 10
+  blastRadius: 35
 --- !u!136 &136904547226567692
 CapsuleCollider:
   m_ObjectHideFlags: 1
