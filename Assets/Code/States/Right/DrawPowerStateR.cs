@@ -30,6 +30,7 @@ public class DrawPowerStateR : StateMachineBehaviour {
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 Debug.Log("Holding Right Trigger");
+                chargedBolt.EnableReadyBoltEffect();
                 animator.SetBool("ReadyFire", true);
             }
         }

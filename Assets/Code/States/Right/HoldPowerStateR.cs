@@ -22,7 +22,8 @@ public class HoldPowerStateR : StateMachineBehaviour {
         if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
         {
             Debug.Log("Released Right Trigger");
-            chargedBolt.EnableReadyBoltEffect();
+            chargedBolt.DisableReadyBoltEffect();
+            chargedBolt.FireBolt();
             chargedBolt.chargeSlider.value = 0;
             animator.SetBool("ReadyFire", false);        
         }
