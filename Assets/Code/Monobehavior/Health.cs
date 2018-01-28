@@ -37,7 +37,7 @@ public class Health : MonoBehaviour {
     }
     public void TakeDamage(int amount)
     {
-        Debug.Log(gameObject.name + " Took Damage!");
+        //Debug.Log(gameObject.name + " Took Damage!");
         currentHealth -= amount;
         // If the enemy is dead...
         if (currentHealth <= 0)
