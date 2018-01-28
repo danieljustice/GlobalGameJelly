@@ -46,11 +46,13 @@ public class CreepEnemyAI : MonoBehaviour {
     {
         //this is how you attack
         //print("attacking");
+        //        transform.LookAt(target.transform);
+        transform.localRotation = Quaternion.LookRotation(target.transform.position);
     }
 
     public void StartAttack()
     {
-        InvokeRepeating("Attack", .5f, 1.5f);
+        InvokeRepeating("Attack", .5f, .1f);
     }
 
     public void StopAttack()

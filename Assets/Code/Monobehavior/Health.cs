@@ -37,7 +37,7 @@ public class Health : MonoBehaviour {
     }
     public void TakeDamage(int amount)
     {
-        Debug.Log(gameObject.name + " Took Damage!");
+        //Debug.Log(gameObject.name + " Took Damage!");
         currentHealth -= amount;
         // If the enemy is dead...
         if (currentHealth <= 0)
@@ -60,8 +60,11 @@ public class Health : MonoBehaviour {
         //enemyAudio.clip = deathClip;
         //enemyAudio.Play();
         //capsuleCollider.isTrigger = true;
-        animator.SetBool("isDead", true);
-        //yield return new WaitForSecondsRealtime(2f);
+        if (animator)
+        {
+            animator.SetBool("isDead", true);
+        }
+            //yield return new WaitForSecondsRealtime(2f);
         isDead = true;
     }
     IEnumerator Hit()
