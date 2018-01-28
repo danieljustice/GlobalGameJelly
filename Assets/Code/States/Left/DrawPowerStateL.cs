@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightHandFSMBase : MonoBehaviour {
+public class DrawPowerStateL : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
