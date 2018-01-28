@@ -45,12 +45,14 @@ public class CreepEnemyAI : MonoBehaviour {
     void Attack()
     {
         //this is how you attack
-        print("attacking");
+        //print("attacking");
+        //        transform.LookAt(target.transform);
+        transform.localRotation = Quaternion.LookRotation(target.transform.position);
     }
 
     public void StartAttack()
     {
-        InvokeRepeating("Attack", .5f, 1.5f);
+        InvokeRepeating("Attack", .5f, .1f);
     }
 
     public void StopAttack()
@@ -62,7 +64,7 @@ public class CreepEnemyAI : MonoBehaviour {
     {
         poolStuff.ReturnToPool();
         //do dieing things heres
-        anim.SetBool("isDead", true);
+        //anim.SetBool("isDead", true);
         childAnimator.SetBool("isDead", true);
     }
 }
