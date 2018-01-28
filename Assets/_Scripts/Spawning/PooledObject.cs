@@ -17,10 +17,10 @@ public class PooledObject : MonoBehaviour {
 	[System.NonSerialized]
 	ObjectPool poolInstanceForPrefab;
 
-	public T GetPooledInstance<T>() where T : PooledObject
+    public T GetPooledInstance<T>(Vector3 newPosition, Quaternion newRotation) where T : PooledObject
 	{
 		if (!poolInstanceForPrefab)
 			poolInstanceForPrefab = ObjectPool.GetPool (this);
-		return (T)poolInstanceForPrefab.GetObject ();
+        return (T)poolInstanceForPrefab.GetObject (newPosition, newRotation);
 	}
 }

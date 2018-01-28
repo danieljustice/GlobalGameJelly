@@ -4,27 +4,60 @@ using UnityEngine;
 
 public class SpawnEngine : MonoBehaviour {
 
-    public float intervalStart;
-    public BoundedPoolSpawner bps;
-    public PoolStuff obj;
+    public int startWait;
+
+    public ScriptableStat waveNumber;
+
+    public Vector2 batchrange = new Vector2(1,1);
+
+    public float batchLull; // time between batches
+    public float waveLull; // time between waves
+
+    public PoolStuff[] creeps;
+
+    private BoundedPoolSpawner bps;
+    //public PoolStuff obj;
+
     public Transform destination;
 
-    private float timer;
+    //private float batchTimer;
+    //private float waveTimer;
 
     private void Start()
     {
-        timer = intervalStart;
-    }
-    void Update () {
+        waveNumber.SetValue(0);
+        //waveTimer = 0;
+        //batchTimer = 0;
+        bps = FindObjectOfType(typeof(BoundedPoolSpawner)) as BoundedPoolSpawner;
 
-        if (timer > 0) 
+        StartCoroutine(MakeWaves());
+    }
+
+    IEnumerator MakeWaves()
+    {
+        yield return new WaitForSeconds(startWait); // wait before starting
+
+        while (waveNumber.GetValue()<1f)
         {
-            timer -= Time.deltaTime;
+            StartCoroutine(MakeBatches()); // 
+            yield return new WaitForSeconds(waveLull);
         }
-        else
+    }
+
+    IEnumerator MakeBatches() 
+    {
+        PoolStuff[] newBatch = new PoolStuff[Mathf.RoundToInt(batchrange.y)];
+
+        for (int i = 0; i < batchrange.y; i++)
         {
-            PoolStuff obj2 = bps.SpawnObject(obj);
-            timer = intervalStart;
+            newBatch[i] = creeps[Random.Range(0, creeps.Length)];
         }
+
+        foreach (var item in newBatch)
+        {
+            PoolStuff obj2 = bps.SpawnObject(item);
+        }
+
+        yield return new WaitForSeconds(1);
     }
 }
