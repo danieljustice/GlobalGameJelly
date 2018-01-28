@@ -9,23 +9,36 @@ public class ChargeBoltBehavior : MonoBehaviour {
     public Slider chargeSlider;
     public float chargeAmount;
     public GameObject chargedBoltGo;
-    
-	void Start () {       
+    public GameObject drawPowerFX;
+    public GameObject holdPowerFX;
+
+    void Start () {       
         animator.GetComponent<Animator>();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-        chargeAmount = chargeSlider.value;      	
-	}
-    public void ShowCharged()
-    {
-        chargedBoltGo.SetActive(true);
+        chargeAmount = chargeSlider.value;
+        animator.SetFloat("ChargeAmount", chargeAmount);
     }
-    public void HideCharged()
+    public void EnableDrawPowerEffect()
     {
-        chargedBoltGo.SetActive(false);
+        drawPowerFX.SetActive(true);
     }
+    public void DisableDrawPowerEffect()
+    {
+        drawPowerFX.SetActive(false);
+    }
+    public void EnableHoldPowerEffect()
+    {
+        holdPowerFX.SetActive(true);
+    }
+    public void DisableHoldPowerEffect()
+    {
+        holdPowerFX.SetActive(false);
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag.Equals(tagToCharge))

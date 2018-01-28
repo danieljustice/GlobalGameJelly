@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class OpenChargingState : ZuesHandBaseFSM
-{
+public class HoldPowerStateR : StateMachineBehaviour {
     public GameObject zuesHand;
     public ChargeBoltBehavior chargedBolt;
     public float currentCharge;
-    public string tagToCharge;   
-    
+    public string tagToCharge;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
