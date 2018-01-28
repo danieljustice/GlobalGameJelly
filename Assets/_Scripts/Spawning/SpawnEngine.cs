@@ -4,48 +4,60 @@ using UnityEngine;
 
 public class SpawnEngine : MonoBehaviour {
 
-    public int batchsize;
-    public float intervalStart;
+    public int startWait;
+
+    public ScriptableStat waveNumber;
+
+    public Vector2 batchrange = new Vector2(1,1);
+
+    public float batchLull; // time between batches
+    public float waveLull; // time between waves
+
+    public PoolStuff[] creeps;
 
     private BoundedPoolSpawner bps;
-    public PoolStuff obj;
+    //public PoolStuff obj;
 
     public Transform destination;
 
-    private float timer;
+    //private float batchTimer;
+    //private float waveTimer;
 
     private void Start()
     {
-        bps = (BoundedPoolSpawner)GameObject.FindObjectOfType(typeof(BoundedPoolSpawner));
-        timer = 0;
-    }
-    void Update () {
+        waveNumber.SetValue(0);
+        //waveTimer = 0;
+        //batchTimer = 0;
+        bps = FindObjectOfType(typeof(BoundedPoolSpawner)) as BoundedPoolSpawner;
 
-        if (timer > 0) 
-        {
-            timer -= Time.deltaTime;
-        }
-        else
-        {
-            PoolStuff[] batch = MakeBatch(batchsize);
-
-            foreach (var item in batch)
-            {
-                PoolStuff obj2 = bps.SpawnObject(item);
-            }
-            timer = intervalStart;
-        }
+        StartCoroutine(MakeWaves());
     }
 
-    PoolStuff[] MakeBatch(int _batchsize)
+    IEnumerator MakeWaves()
     {
-        PoolStuff[] newBatch = new PoolStuff[_batchsize];
+        yield return new WaitForSeconds(startWait); // wait before starting
 
-        for (int i = 0; i < _batchsize; i++)
+        while (waveNumber.GetValue()<1f)
         {
-            newBatch[i] = obj;
+            StartCoroutine(MakeBatches()); // 
+            yield return new WaitForSeconds(waveLull);
+        }
+    }
+
+    IEnumerator MakeBatches() 
+    {
+        PoolStuff[] newBatch = new PoolStuff[Mathf.RoundToInt(batchrange.y)];
+
+        for (int i = 0; i < batchrange.y; i++)
+        {
+            newBatch[i] = creeps[Random.Range(0, creeps.Length)];
         }
 
-        return newBatch;
+        foreach (var item in newBatch)
+        {
+            PoolStuff obj2 = bps.SpawnObject(item);
+        }
+
+        yield return new WaitForSeconds(1);
     }
 }
