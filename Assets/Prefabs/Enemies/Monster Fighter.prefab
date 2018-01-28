@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 95041707321627868}
   - component: {fileID: 114407069541554950}
   - component: {fileID: 195661572172917588}
-  - component: {fileID: 54881469678108848}
   - component: {fileID: 136668676937297130}
   - component: {fileID: 114328485899399570}
   m_Layer: 0
@@ -72,8 +71,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773629744953764}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.39, y: 0, z: 4.06}
+  m_LocalRotation: {x: -0, y: -0.29918912, z: -0, w: -0.9541939}
+  m_LocalPosition: {x: -11.172253, y: 1.833334, z: -21.320223}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4841756675160330}
@@ -99,8 +98,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1068248360742330}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.18661499, y: 0, z: 0, w: 0.98243314}
+  m_LocalPosition: {x: 0, y: 0.16089934, z: 0.46462908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4759595382604300}
@@ -148,21 +147,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1955318636839632}
   m_Mesh: {fileID: 4300000, guid: b7508ed894264bd4fa78d54c11946055, type: 3}
---- !u!54 &54881469678108848
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773629744953764}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &65195027874146378
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -221,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   sinkSpeed: 0.5
   scoreValue: 10
 --- !u!114 &114407069541554950
@@ -259,8 +243,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 5
+  m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
