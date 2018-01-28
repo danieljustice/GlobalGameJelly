@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class SpawnEngine : MonoBehaviour {
 
-    public int startWait;
-
-    public ScriptableStat waveNumber;
+    public int startWait; // wait before starting the waves
     public ScriptableBool wavesAreGo;
-    public int numberOfBatches;
-    public Vector2 batchrange = new Vector2(1,1);
+    public ScriptableStat waveNumber; // what wave are we on?
+
+    // The two below are based on the waveNumber.
+    public ScriptableStat batchModifier; // how much should we increase the number of batches?
+    public ScriptableStat batchSizeModifier; // how much should we increase the number within a batch?
 
     public float batchLull; // time between batches
     public float waveLull; // time between waves
 
-    public PoolStuff[] creeps;
+    public GameObject[] creeps;
 
-    private BoundedPoolSpawner bps;
-
-    public Transform destination;
+    private BoundedSpawner bps;
 
     private void Start()
     {
         waveNumber.SetValue(0);
         wavesAreGo.SetValue(true);
-        bps = FindObjectOfType(typeof(BoundedPoolSpawner)) as BoundedPoolSpawner;
+        bps = FindObjectOfType(typeof(BoundedSpawner)) as BoundedSpawner;
 
         StartCoroutine(MakeWaves());
     }
@@ -36,24 +35,27 @@ public class SpawnEngine : MonoBehaviour {
         while (wavesAreGo)
         {
             StartCoroutine(MakeBatches());
-            yield return new WaitForSeconds(waveLull);
+            yield return new WaitForSeconds(waveLull); // wait time between waves
+
+            waveNumber.SetValue(1); // for now we can increase batches
         }
     }
 
     IEnumerator MakeBatches() 
     {
-        for (int i = 0; i < numberOfBatches; i++)
+        for (int i = 0; i < Mathf.RoundToInt(waveNumber.GetValue() * batchModifier.GetValue()); i++)
         {
-            PoolStuff[] newBatch = new PoolStuff[Mathf.RoundToInt(batchrange.y)];
+            int batchsize = Mathf.RoundToInt(waveNumber.GetValue() * batchSizeModifier.GetValue());
+            GameObject[] newBatch = new GameObject[batchsize];
 
-            for (int x = 0; x < batchrange.y; x++)
+            for (int x = 0; x < batchsize; x++)
             {
                 newBatch[x] = creeps[Random.Range(0, creeps.Length)];
             }
 
             foreach (var item in newBatch)
             {
-                PoolStuff obj2 = bps.SpawnObject(item);
+                GameObject obj2 = bps.SpawnObject(item);
             }
         }
 
