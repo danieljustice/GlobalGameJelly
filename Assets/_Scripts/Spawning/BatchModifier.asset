@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258b35adf5d6841699c344c003d0d295, type: 3}
   m_Name: BatchModifier
   m_EditorClassIdentifier: 
-  number: 2
+  number: 1

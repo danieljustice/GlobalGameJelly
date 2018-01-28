@@ -25,7 +25,18 @@ public class SpawnEngine : MonoBehaviour {
         wavesAreGo.SetValue(true);
         spawners = FindObjectsOfType<BoundedSpawner>() as BoundedSpawner[];
 
-        StartCoroutine(MakeWaves());
+        if (spawners.Length < 1)
+        {
+            Debug.Log("There are no spawners for the SpawnEngine!!!");
+        }
+        else if (creeps.Length < 1)
+        {
+            Debug.Log("There are no creeps in the SpawnEngine!!!");
+        }
+        else
+        {
+            StartCoroutine(MakeWaves());
+        }
     }
 
     IEnumerator MakeWaves()
@@ -45,6 +56,9 @@ public class SpawnEngine : MonoBehaviour {
 
     IEnumerator MakeBatches() 
     {
+        if (Mathf.RoundToInt(batchModifier.GetValue()) == 0 | (Mathf.RoundToInt(batchSizeModifier.GetValue()) == 0))
+            Debug.Log("Your rounded BatchModifier or BatchSizeModifier is equal to zero and needs to be more than 0!!!");
+        
         for (int i = 0; i < Mathf.RoundToInt(waveNumber.GetValue() * batchModifier.GetValue()); i++)
         {
             BoundedSpawner whichSpawner = spawners[Random.Range(0,spawners.Length)];
@@ -60,10 +74,10 @@ public class SpawnEngine : MonoBehaviour {
 
             foreach (var item in newBatch)
             {
-                GameObject obj2 = whichSpawner.SpawnObject(item);
+                GameObject obj = whichSpawner.SpawnObject(item);
             }
-        }
 
-        yield return new WaitForSeconds(batchLull);
+            yield return new WaitForSeconds(batchLull);
+        }
     }
 }
