@@ -7,7 +7,8 @@ public class SpawnEngine : MonoBehaviour {
     public int startWait;
 
     public ScriptableStat waveNumber;
-
+    public ScriptableBool wavesAreGo;
+    public int numberOfBatches;
     public Vector2 batchrange = new Vector2(1,1);
 
     public float batchLull; // time between batches
@@ -16,18 +17,13 @@ public class SpawnEngine : MonoBehaviour {
     public PoolStuff[] creeps;
 
     private BoundedPoolSpawner bps;
-    //public PoolStuff obj;
 
     public Transform destination;
-
-    //private float batchTimer;
-    //private float waveTimer;
 
     private void Start()
     {
         waveNumber.SetValue(0);
-        //waveTimer = 0;
-        //batchTimer = 0;
+        wavesAreGo.SetValue(true);
         bps = FindObjectOfType(typeof(BoundedPoolSpawner)) as BoundedPoolSpawner;
 
         StartCoroutine(MakeWaves());
@@ -37,27 +33,30 @@ public class SpawnEngine : MonoBehaviour {
     {
         yield return new WaitForSeconds(startWait); // wait before starting
 
-        while (waveNumber.GetValue()<1f)
+        while (wavesAreGo)
         {
-            StartCoroutine(MakeBatches()); // 
+            StartCoroutine(MakeBatches());
             yield return new WaitForSeconds(waveLull);
         }
     }
 
     IEnumerator MakeBatches() 
     {
-        PoolStuff[] newBatch = new PoolStuff[Mathf.RoundToInt(batchrange.y)];
-
-        for (int i = 0; i < batchrange.y; i++)
+        for (int i = 0; i < numberOfBatches; i++)
         {
-            newBatch[i] = creeps[Random.Range(0, creeps.Length)];
+            PoolStuff[] newBatch = new PoolStuff[Mathf.RoundToInt(batchrange.y)];
+
+            for (int x = 0; x < batchrange.y; x++)
+            {
+                newBatch[x] = creeps[Random.Range(0, creeps.Length)];
+            }
+
+            foreach (var item in newBatch)
+            {
+                PoolStuff obj2 = bps.SpawnObject(item);
+            }
         }
 
-        foreach (var item in newBatch)
-        {
-            PoolStuff obj2 = bps.SpawnObject(item);
-        }
-
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(batchLull);
     }
 }
