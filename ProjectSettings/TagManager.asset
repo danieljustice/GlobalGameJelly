@@ -12,6 +12,7 @@ TagManager:
   - Charger
   - waypoint
   - target
+  - Spawner
   layers:
   - Default
   - TransparentFX

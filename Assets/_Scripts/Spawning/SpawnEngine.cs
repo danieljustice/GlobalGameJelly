@@ -17,13 +17,13 @@ public class SpawnEngine : MonoBehaviour {
 
     public GameObject[] creeps;
 
-    private BoundedSpawner bps;
+    private BoundedSpawner[] spawners;
 
     private void Start()
     {
         waveNumber.SetValue(0);
         wavesAreGo.SetValue(true);
-        bps = FindObjectOfType(typeof(BoundedSpawner)) as BoundedSpawner;
+        spawners = FindObjectsOfType<BoundedSpawner>() as BoundedSpawner[];
 
         StartCoroutine(MakeWaves());
     }
@@ -32,12 +32,14 @@ public class SpawnEngine : MonoBehaviour {
     {
         yield return new WaitForSeconds(startWait); // wait before starting
 
+        waveNumber.SetValue(1); // start the waves!
+
         while (wavesAreGo)
         {
+            Debug.Log(waveNumber.GetValue());
             StartCoroutine(MakeBatches());
             yield return new WaitForSeconds(waveLull); // wait time between waves
-
-            waveNumber.SetValue(1); // for now we can increase batches
+            waveNumber.ApplyChange(1);
         }
     }
 
@@ -45,7 +47,10 @@ public class SpawnEngine : MonoBehaviour {
     {
         for (int i = 0; i < Mathf.RoundToInt(waveNumber.GetValue() * batchModifier.GetValue()); i++)
         {
+            BoundedSpawner whichSpawner = spawners[Random.Range(0,spawners.Length)];
+
             int batchsize = Mathf.RoundToInt(waveNumber.GetValue() * batchSizeModifier.GetValue());
+
             GameObject[] newBatch = new GameObject[batchsize];
 
             for (int x = 0; x < batchsize; x++)
@@ -55,7 +60,7 @@ public class SpawnEngine : MonoBehaviour {
 
             foreach (var item in newBatch)
             {
-                GameObject obj2 = bps.SpawnObject(item);
+                GameObject obj2 = whichSpawner.SpawnObject(item);
             }
         }
 
