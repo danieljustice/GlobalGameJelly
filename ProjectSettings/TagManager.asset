@@ -8,6 +8,8 @@ TagManager:
   - RootUI
   - Chargable
   - Charger
+  - waypoint
+  - target
   layers:
   - Default
   - TransparentFX
