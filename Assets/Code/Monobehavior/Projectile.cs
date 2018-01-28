@@ -11,7 +11,8 @@ public class Projectile : MonoBehaviour {
         {
             Debug.Log("Hit Object: " + other.gameObject.name);
             hasCollided = true;
-            ExplosionDamage();           
+            ExplosionDamage();
+			gameObject.GetComponent<Explode> ().Denonate (35, 100);
             Destroy(gameObject,1);
         }
     }

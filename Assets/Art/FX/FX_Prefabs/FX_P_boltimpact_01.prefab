@@ -391,7 +391,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1059710356
+  randomSeed: -2110014869
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3752,7 +3752,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2007877587
+  randomSeed: -919804739
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7170,7 +7170,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 87587182
+  randomSeed: 1188546783
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10576,7 +10576,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 627391187
+  randomSeed: 278930795
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13986,7 +13986,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 584437808
+  randomSeed: -1776934175
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17392,7 +17392,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -648229429
+  randomSeed: 748468809
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -20753,7 +20753,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -455067957
+  randomSeed: 1853853377
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -27499,7 +27499,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1699988534
+  randomSeed: -1947845936
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -31052,7 +31052,7 @@ ParticleSystemRenderer:
   m_LengthScale: 0
   m_SortingFudge: 0
   m_NormalDirection: 1
-  m_RenderAlignment: 2
+  m_RenderAlignment: 1
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
@@ -31214,7 +31214,7 @@ ParticleSystemRenderer:
   m_LengthScale: 0
   m_SortingFudge: 0
   m_NormalDirection: 1
-  m_RenderAlignment: 2
+  m_RenderAlignment: 1
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
